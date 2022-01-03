@@ -11,6 +11,7 @@ const devMode = !app.isPackaged;
 
 interface MainEventsInterface {
   [key: string]: (
+    event: Electron.Event,
     options: Electron.BrowserWindowConstructorOptions,
     url: string,
   ) => unknown;
@@ -28,18 +29,28 @@ const parseRoute = (route?: string): string => {
 
 const mainEvents: MainEventsInterface = {
   openWindow: (
+    event: Electron.Event,
     options: Electron.BrowserWindowConstructorOptions,
     route: string,
   ) => {
     const windowURL = devMode
-      ? `http://localhost:3000/#/about`
-      : `file://${__dirname}/../index.html#/about`;
-    const window = createWindow({}, windowURL);
+      ? `http://localhost:3000/#/${route}`
+      : `file://${__dirname}/../index.html#/${route}`;
+    const window = createWindow(options, windowURL);
     return window;
   },
   example: () => {
     console.log("Hi from React");
     mainWindow.webContents.send("exampleElectron");
+  },
+  minimizeMainWindow: () => {
+    mainWindow.minimize();
+  },
+  maximizeMainWindow: () => {
+    mainWindow.isMaximized() ? mainWindow.unmaximize() : mainWindow.maximize();
+  },
+  closeMainWindow: () => {
+    mainWindow.close();
   },
 };
 
@@ -61,16 +72,21 @@ const createWindow = (
     ...options,
   };
   const window = new BrowserWindow(browserOptions);
-  window.loadURL(route).then(() => {
-    window.show();
-  });
+  window
+    .loadURL(route)
+    .then(() => {
+      window.show();
+    })
+    .catch(() => {
+      window.show();
+    });
   return window;
 };
 
 function createMainWindow() {
   const mainURL = parseRoute();
 
-  mainWindow = createWindow({}, mainURL);
+  mainWindow = createWindow({ frame: false }, mainURL);
   mainWindow.on("close", () => {
     app.quit();
   });
