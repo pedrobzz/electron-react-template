@@ -12,7 +12,7 @@ Some Built-In Features:
     
 - **Easy to create new** **Windows (Including Transparent):**
     
-    Easy to Create Transparent Windows. Using the “openWindow” event (Example on src/modules/Home), you can easily manage how your window will open, using the BrowserSettings, and which page it will open. For example, if you want to create a transparent window, you can do the following:
+    Using the "openWindow" event (Example in src/modules/Home), you can easily manage how your window will open, using BrowserSettings, and which page will open. For example, if you want to create a transparent window, you can do the following:
     
     ```tsx
     const options: Electron.BrowserWindowConstructorOptions = {
