@@ -64,6 +64,6 @@ This is my favorite React File Structure. Any new feature will follow this struc
 
 ### Npm Scripts
 
-`**npm run electron:dev**` or  `**yarn electron:dev`:** Turn on the dev server. Any changes to the React Front End will automatically be displayed in the Electron window. Any changes to the Electron file will close the window and reopen with the new changes.
+**`npm run electron:dev`** or  **`yarn electron:dev`**: Turn on the dev server. Any changes to the React Front End will automatically be displayed in the Electron window. Any changes to the Electron file will close the window and reopen with the new changes.
 
 **`npm run electron:build`** or **`yarn electron:build`**: Builds the app. It will be packed to the /dist folder.
