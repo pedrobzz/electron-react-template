@@ -20,7 +20,6 @@ const Home: React.FC = (): JSX.Element => {
             <button
               onClick={() => {
                 window.electron.ipcRenderer.send("example");
-                return 123;
               }}
             >
               Say Hi to Electron
@@ -28,13 +27,18 @@ const Home: React.FC = (): JSX.Element => {
             <button
               onClick={() => {
                 const options: Electron.BrowserWindowConstructorOptions = {
-                  // transparent: true,
-                  // frame: false,
+                  height: 125,
+                  width: 200,
+                  transparent: true,
+                  frame: false,
+                  resizable: false,
+                  alwaysOnTop: true,
                 };
+                const windowURL = "about";
                 window.electron.ipcRenderer.send(
                   "openWindow",
                   options,
-                  "about",
+                  windowURL,
                 );
               }}
             >
