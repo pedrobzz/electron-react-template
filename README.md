@@ -37,28 +37,28 @@ Some Built-In Features:
 This is my favorite React File Structure. Any new feature will follow this structure
 
 ```
-**├─┬ electron** # Main Electron Folder
-****│ ├── main.ts # Main Electron File
+├─┬ electron # Main Electron Folder
+│ ├── main.ts # Main Electron File
 │ ├── preload.ts # This script exposes the ipcRenderer to the main window
 │ └── tsconfig.json
 ├── package.json
-├─┬ **public**
+├─┬ public
 ├─┬ src
 │ ├── App.tsx
 │ ├── index.tsx
-│ ├─┬ **common** # Every common files goes here, based on their category
-│ │ ├─┬ **components**
-│ │ ├─┬ **interfaces**
-│ │ ├─┬ **styles**
-│ **├─┬ modules** # Every module should go here
-****│ │ ├─┬ M**odule1** # A module has its own isolated components.
-****│ │ │ ├─┬ **components**
-│ │ │ ├─┬ **interfaces**
-│ │ │ ├─┬ **styles**
+│ ├─┬ common # Every common files goes here, based on their category
+│ │ ├─┬ components
+│ │ ├─┬ interfaces
+│ │ ├─┬ styles
+│ ├─┬ modules # Every module should go here
+│ │ ├─┬ Module1 # A module has its own isolated components.
+│ │ │ ├─┬ components
+│ │ │ ├─┬ interfaces
+│ │ │ ├─┬ styles
 │ │ │ ├── index.tsx # This is the "page"
-**│ │ ├─┬ Module2
-│ │ ├─┬ Module3**
-│ └─┬ **tests** # Tests should go here
+│ │ ├─┬ Module2
+│ │ ├─┬ Module3
+│ └─┬ tests # Tests should go here
 ├── tsconfig.json
 ```
 
